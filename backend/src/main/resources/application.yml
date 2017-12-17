@@ -1,14 +1,6 @@
+spring.session.store-type: none
+
+spring.jpa.show-sql: true
+spring.jpa.hibernate.ddl-auto: update
+
 spring.devtools.livereload.enabled: false
-
----
-spring:
-    profiles: production
-
-# TODO: add the credentials to your production redis
-# preferably using environment variables
-
-# spring.profiles.active: redis
-#    redis:
-#      password:
-#      host:
-#      port:

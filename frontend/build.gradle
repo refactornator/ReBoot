@@ -1,5 +1,5 @@
 plugins {
-  id "com.moowork.node" version "1.1.1"
+  id 'com.moowork.node' version '1.2.0'
 }
 
 apply plugin: 'base'
@@ -8,7 +8,7 @@ version '0.0.1'
 buildDir = 'dist'
 
 node {
-  version = '6.10.3'
+  version = '8.9.3'
   download = true
 }
 
