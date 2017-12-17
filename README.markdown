@@ -1,16 +1,13 @@
 # An opinionated React/Redux + Spring Boot Starter App
 
-image:https://travis-ci.org/wlindner/ReBoot.svg?branch=master["Build Status", link="https://travis-ci.org/wlindner/ReBoot"]
-image:https://ci.appveyor.com/api/projects/status/y3uw0gpo9dtec349?svg=true["Windows build Status", link="https://ci.appveyor.com/project/wlindner/ReBoot"]
-
 ![ReBoot](https://upload.wikimedia.org/wikipedia/en/3/37/Reboottitlecard.gif "ReBoot")
 
-Be more productive with this simple project that uses the https://spring.io/blog/2015/06/17/devtools-in-spring-boot-1-3[spring dev tools]
-and https://github.com/gaearon/babel-plugin-react-transform[react transform] for hot reloading.
+Be more productive with this simple project that uses the [spring dev tools](https://spring.io/blog/2015/06/17/devtools-in-spring-boot-1-3)
+and [react transform](https://github.com/gaearon/babel-plugin-react-transform) for hot reloading.
 
 Everything: backend, frontend and styles will be hot reloaded automatically.
 
-This project also sets up spring security and http://projects.spring.io/spring-session/[spring-sessions], which will
+This project also sets up spring security and [spring-sessions](http://projects.spring.io/spring-session/), which will
 automatically store your sessions in Redis, allowing you to scale on multiple servers.
 
 Both the frontend and the backend are fully tested.
@@ -68,25 +65,17 @@ This allows the retrieval of the session data in Redis.
 If you want to use a real redis, you can run the application with the `redis` profile.
 
 If the `redis` profile is not active, your session will be stored in a map.
-See: https://github.com/wlindner/ReBoot/blob/master/backend/src/main/java/react/config/redis/EmbeddedSessionConfig.java[EmbeddedSessionConfig].
+See: [EmbeddedSessionConfig](https://github.com/wlindner/ReBoot/blob/master/backend/src/main/java/react/config/redis/EmbeddedSessionConfig.java).
 This is great in development but you should avoid it in production.
-
-Summary:
-|===
-| Profile | description | uses `x-auth-token` header?
-
-| `redis` | Use a real redis connecting on localhost by default. | Yes
-| <none> (`!redis`) | Uses a map to store sessions | Yes
-|===
 
 ### Active profiles
 
 If your run your project with gradle, the system properties won't be passed on to Spring.
-See https://github.com/spring-projects/spring-boot/issues/832[this issue] for workarounds.
+See [this issue](https://github.com/spring-projects/spring-boot/issues/832) for workarounds.
 
 The simplest way to go is to specify active profiles in your IDE.
 
-http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-profiles.html[Check out the doc] to learn
+[Check out the doc](http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-profiles.html) to learn
 more about profiles in Spring Boot.
 
 To run the jar in production mode use the following command:
@@ -99,17 +88,17 @@ java -jar boot-react-0.0.1-SNAPSHOT.jar --spring.profiles.active=production     
 
 The application is configured to work with Spring Security.
 It uses an in-memory authentication but you are free use
-http://docs.spring.io/spring-security/site/docs/4.0.2.RELEASE/reference/htmlsingle/#jc-authentication[other implementations]
-or to http://docs.spring.io/spring-security/site/docs/4.0.2.RELEASE/reference/htmlsingle/#core-services[roll your own].
+[other implementations](http://docs.spring.io/spring-security/site/docs/4.0.2.RELEASE/reference/htmlsingle/#jc-authentication)
+or to [roll your own](http://docs.spring.io/spring-security/site/docs/4.0.2.RELEASE/reference/htmlsingle/#core-services).
 
 ### Redux
 
-This project uses https://github.com/rackt/react-redux[Redux] to handle state and actions.
+This project uses [Redux](https://github.com/rackt/react-redux) to handle state and actions.
 It is a simple library with very powerful dev tools.
 
-Dan Abramov, the author of Redux, published a https://egghead.io/series/getting-started-with-redux[great Redux video tutorial].
+Dan Abramov, the author of Redux, published a [great Redux video tutorial](https://egghead.io/series/getting-started-with-redux).
 
-I also suggest reading the https://github.com/rackt/react-redux/blob/master/docs/quick-start.md[redux quick start] to understand
+I also suggest reading the [redux quick start](https://github.com/rackt/react-redux/blob/master/docs/quick-start.md) to understand
 how to architecture you application and the difference between containers and components.
 
 Components are simple display elements that receive everything they need (state and actions) via props.
@@ -118,20 +107,20 @@ Containers are connected to Redux and as such, they can pull whatever properties
 and bind actions to dispatch.
 Those containers are only connecting simple components to Redux.
 
-We can http://rackt.github.io/redux/docs/recipes/WritingTests.html[write tests] on connected components,
+We can [write tests](http://rackt.github.io/redux/docs/recipes/WritingTests.html) on connected components,
 but it is more effective to test them in isolation from Redux.
 
 ### Router push state
 
-The project uses https://github.com/rackt/react-router[react-router] to handle routes.
+The project uses [react-router](https://github.com/rackt/react-router) to handle routes.
 You can choose several modes to handles the router history.
 By default, the project uses the browser history,
 which creates the nicest URLs (**/login**, **/private**, etc.).
 
 In development, we use a dev server that
-https://github.com/wlindner/ReBoot/blob/master/frontend/server.js#L21-L24[proxies] requests to the index.
+[proxies](https://github.com/wlindner/ReBoot/blob/master/frontend/server.js#L21-L24) requests to the index.
 
-In production, we have to use a special https://github.com/wlindner/ReBoot/blob/master/backend/src/main/java/react/config/SinglePageAppConfig.java[resource handler]
+In production, we have to use a special [resource handler](https://github.com/wlindner/ReBoot/blob/master/backend/src/main/java/react/config/SinglePageAppConfig.java)
 to redirect all non-asset requests to the index.
 
 You can remove it if you choose to use memory history (no URL change) or hash history
@@ -151,12 +140,11 @@ You can run the backend/frontend tests only with:
 ./gradlew backend/frontend:test
 ```
 
-To test the backend, we use a simple https://github.com/geowarin/spring-spock-mvc[library] that wraps
+To test the backend, we use a simple [library](https://github.com/geowarin/spring-spock-mvc) that wraps
 spring mvc tests and makes them a bit nicer to read.
-See the https://github.com/wlindner/ReBoot/blob/master/backend/src/test/groovy/react/auth/AuthenticationSpec.groovy[auth-spec]
-for an example.
+See the [auth-spec](https://github.com/wlindner/ReBoot/blob/master/backend/src/test/groovy/react/auth/AuthenticationSpec.groovy) for an example.
 
-To test the frontend, we use https://github.com/airbnb/enzyme[enzyme].
+To test the frontend, we use [enzyme](https://github.com/airbnb/enzyme).
 
 ## Shipping
 
@@ -177,7 +165,7 @@ java -jar -Dspring.profiles.active=production backend/build/libs/boot-react-0.0.
 In production, you should use a real Redis instance so, please uncomment and edit the configuration file
 (`backend/src/main/resources/application.yml`).
 
-With spring boot 1.3, you can install the application http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/html/deployment-install.html#deployment-service[as a linux service]
+With spring boot 1.3, you can install the application [as a linux service](http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/html/deployment-install.html#deployment-service)
 
 NB: each application can be assembled with the `assemble` task so you can use `frontend:assemble` or `backend:assemble`.
 The backend task depends on the frontend task.
