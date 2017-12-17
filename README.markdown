@@ -3,6 +3,8 @@
 image:https://travis-ci.org/wlindner/ReBoot.svg?branch=master["Build Status", link="https://travis-ci.org/wlindner/ReBoot"]
 image:https://ci.appveyor.com/api/projects/status/y3uw0gpo9dtec349?svg=true["Windows build Status", link="https://ci.appveyor.com/project/wlindner/ReBoot"]
 
+![ReBoot](https://upload.wikimedia.org/wikipedia/en/3/37/Reboottitlecard.gif "ReBoot")
+
 Be more productive with this simple project that uses the https://spring.io/blog/2015/06/17/devtools-in-spring-boot-1-3[spring dev tools]
 and https://github.com/gaearon/babel-plugin-react-transform[react transform] for hot reloading.
 
@@ -138,11 +140,13 @@ You can remove it if you choose to use memory history (no URL change) or hash hi
 ## Running the tests
 
 The check tasks will run the tests in both the frontend and the backend:
+
 ```
 ./gradlew check
 ```
 
 You can run the backend/frontend tests only with:
+
 ```
 ./gradlew backend/frontend:test
 ```
