@@ -1,5 +1,9 @@
 spring.session.store-type: none
 
+security.basic.enabled: false
+spring.security.enabled: false
+management.security.enabled: false
+
 spring.jpa.show-sql: true
 spring.jpa.hibernate.ddl-auto: update
 

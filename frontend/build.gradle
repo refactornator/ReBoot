@@ -3,12 +3,13 @@ plugins {
 }
 
 apply plugin: 'base'
-version '0.0.1'
 
+version '0.0.1'
 buildDir = 'dist'
 
 node {
   version = '8.9.3'
+  yarnVersion = '1.2.1'
   download = true
 }
 
