@@ -6,8 +6,12 @@ buildscript {
     mavenCentral()
   }
   dependencies {
-    classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
   }
+}
+
+plugins {
+  id 'org.flywaydb.flyway' version '5.0.2'
 }
 
 apply plugin: 'java'
@@ -17,10 +21,21 @@ apply plugin: 'org.springframework.boot'
 jar {
   baseName = 'ReBoot'
   version = '0.0.1-SNAPSHOT'
+
   from('../frontend/dist') {
     into 'static'
   }
 }
+
+bootRun {
+  addResources = true
+}
+
+flyway {
+  url = 'jdbc:h2:file:./target/database'
+  user = 'user'
+}
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -35,6 +50,8 @@ dependencies {
   compile 'org.springframework.boot:spring-boot-starter-web'
 
   compile 'com.h2database:h2'
+  compile 'org.flywaydb:flyway-core:5.0.2'
+  compile 'org.springframework.boot:spring-boot-starter-data-rest'
   compile 'org.springframework.boot:spring-boot-starter-data-jpa'
   compile 'org.springframework.boot:spring-boot-starter-security'
   compile 'org.springframework.session:spring-session'

@@ -4,6 +4,8 @@ security.basic.enabled: false
 spring.security.enabled: false
 management.security.enabled: false
 
+spring.data.rest.base-path: api
+
 spring.jpa.show-sql: true
 spring.jpa.hibernate.ddl-auto: update
 
