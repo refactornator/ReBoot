@@ -3,20 +3,21 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  devtool: 'source-map',
+  devtool: 'eval-source-map',
   entry: ['./src/index'],
+  devServer: {
+    hot: true,
+    port: 3000,
+    contentBase: path.join(__dirname, '../backend/src/main/resources/static')
+  },
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js'
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'assets/index-template.html')
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
     })
   ],
   module: {
