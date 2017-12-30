@@ -27,9 +27,7 @@ const actions = bindActionCreators({}, store.dispatch);
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <div>
-        <Route exact path="/" component={App} />
-      </div>
+      <Route exact path="/" component={App} />
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
