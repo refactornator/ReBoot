@@ -8,7 +8,11 @@ module.exports = {
   devServer: {
     hot: true,
     port: 3000,
-    contentBase: path.join(__dirname, '../backend/src/main/resources/static')
+    contentBase: path.join(__dirname, '../backend/src/main/resources/static'),
+    proxy: {
+      '/api': 'http://localhost:3000',
+      '/graphql': 'http://localhost:3000'
+    }
   },
   output: {
     path: path.join(__dirname, 'dist'),
