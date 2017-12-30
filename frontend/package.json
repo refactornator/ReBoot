@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Spring boot and react frontend",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --open",
+    "start": "cross-env NODE_ENV=development webpack-dev-server",
     "bundle": "cross-env NODE_ENV=production webpack -p",
     "test": "cross-env NODE_ENV=test mocha --require ./test/setup.js"
   },
