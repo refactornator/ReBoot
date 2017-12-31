@@ -1,12 +1,11 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { Route } from 'react-router';
+import { Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, bindActionCreators } from 'redux';
 import createHistory from 'history/createBrowserHistory';
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
 import App from './ui/container/App';
-import SimpleListComponent from './ui/container/SimpleListComponent';
 
 const history = createHistory();
 const middleware =
