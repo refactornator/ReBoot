@@ -32,8 +32,12 @@
     "webpack-dev-server": "^2.9.7"
   },
   "dependencies": {
+    "apollo-client-preset": "^1.0.5",
     "deep-equal": "^1.0.1",
+    "graphql": "^0.12.3",
+    "graphql-tag": "^2.6.1",
     "react": "^16.2.0",
+    "react-apollo": "^2.0.4",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",

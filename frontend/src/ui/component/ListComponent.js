@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
-export default class ListComponent extends Component {
-  render() {
-    const { items } = this.props;
+const Container = styled.div``;
 
-    return (
-      <div>
-        <h2>Data:</h2>
-        <ul>{items.map((item, index) => <li key={index}>{item}</li>)}</ul>
-      </div>
-    );
-  }
-}
+const ListTitle = styled.h2`
+  margin-left: 16px;
+`;
+
+export default ({ title, items }) => (
+  <Container>
+    <ListTitle>{title}</ListTitle>
+    <ul>{items.map((item, index) => <li key={index}>{item}</li>)}</ul>
+  </Container>
+);
