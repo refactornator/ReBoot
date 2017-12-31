@@ -45,6 +45,8 @@ public class PersonQuery {
    */
   @GraphQLQuery(name = "people")
   public List<Person> getPeople(@GraphQLArgument(name = "Person", description = "Find people by id, first name, or last name") Person person) {
+    if(person == null) person = new Person();
+
     Example<Person> example = Example.of(person);
     List<Person> people = personRepository.findAll(example);
     return StreamSupport.stream(people.spliterator(), false).collect(Collectors.toList());
