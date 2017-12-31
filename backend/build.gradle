@@ -12,6 +12,7 @@ buildscript {
 
 plugins {
   id 'org.flywaydb.flyway' version '5.0.2'
+  id 'com.github.pivotalservices.cf-app' version '2.0.0-RC1'
 }
 
 apply plugin: 'java'
@@ -34,6 +35,25 @@ bootRun {
 flyway {
   url = 'jdbc:h2:file:./target/database'
   user = 'user'
+}
+
+cfConfig {
+  //CF
+  ccHost = "api.local.pcfdev.io"
+  ccUser = "user"
+  ccPassword = "pass"
+  org = "pcfdev-org"
+  space = "pcfdev-space"
+
+  // App
+  name = "application"
+  filePath = "backend/build/libs/ReBoot-0.0.1-SNAPSHOT.jar"
+  instances = 1
+  memory = 1024
+
+  // Env
+  buildpack = "https://github.com/cloudfoundry/java-buildpack.git"
+  environment = ["SPRING_PROFILES_ACTIVE": "production"]
 }
 
 sourceCompatibility = 1.8
