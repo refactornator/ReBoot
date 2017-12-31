@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
-  entry: ['./src/index'],
+  entry: ['react-hot-loader/patch', './src/index'],
   devServer: {
     hot: true,
     port: 3000,

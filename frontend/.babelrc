@@ -1,4 +1,4 @@
 {
   "presets": ["react", "env"],
-  "plugins": ["babel-plugin-styled-components"]
+  "plugins": ["react-hot-loader/babel", "babel-plugin-styled-components"]
 }
