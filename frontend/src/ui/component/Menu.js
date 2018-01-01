@@ -38,7 +38,7 @@ export default class Menu extends Component {
   render() {
     return (
       <HorizontalMenu>
-        <MenuList>
+        <MenuList role="menu">
           <MenuItem>
             <MenuLink to="/">Home</MenuLink>
           </MenuItem>

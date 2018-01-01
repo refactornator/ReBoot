@@ -10,6 +10,6 @@ const ListTitle = styled.h2`
 export default ({ title, items }) => (
   <Container>
     <ListTitle>{title}</ListTitle>
-    <ul>{items.map((item, index) => <li key={index}>{item}</li>)}</ul>
+    <ul role="list">{items.map((item, index) => <li key={index}>{item}</li>)}</ul>
   </Container>
 );
