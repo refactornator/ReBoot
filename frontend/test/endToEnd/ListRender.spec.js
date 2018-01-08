@@ -1,7 +1,7 @@
 describe('List', () => {
   it('renders', async () => {
     const page = await browser.newPage();
-    await page.goto('http://application.local.pcfdev.io/');
+    await page.goto('http://localhost:3000/');
 
     const LIST_ITEM_SELECTOR = '[role="list"] li';
     await page.waitFor(LIST_ITEM_SELECTOR);

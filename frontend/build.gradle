@@ -24,10 +24,14 @@ task start(type: YarnTask) {
   args = ['start']
 }
 
-task test(type: YarnTask) {
-  args = ['test']
+task unitTest(type: YarnTask) {
+  args = ['test:unit']
 }
 
-check.dependsOn(test)
+task e2eTest(type: YarnTask) {
+  args = ['test:e2e']
+}
+
+check.dependsOn(unitTest)
 bundle.dependsOn(yarn_install)
 assemble.dependsOn(bundle)

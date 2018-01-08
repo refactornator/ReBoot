@@ -2,7 +2,7 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 
 import React from 'react';
-import ListComponent from '../../src/ui/component/ListComponent';
+import ListComponent from '../../../src/ui/component/ListComponent';
 
 const items = ['one', 'two', 'three'];
 let props = { items };

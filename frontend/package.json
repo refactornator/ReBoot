@@ -5,8 +5,11 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server",
     "bundle": "cross-env NODE_ENV=production webpack -p",
-    "test":
-      "cross-env NODE_ENV=test mocha ./test/setup.js --require ./test/configureAdapter.js --recursive test"
+    "test": "yarn run test:unit && yarn run test:e2e",
+    "test:unit":
+      "cross-env NODE_ENV=test mocha --require ./test/configureAdapter.js --recursive test/unit",
+    "test:e2e":
+      "cross-env NODE_ENV=test mocha ./test/setup.js --require ./test/configureAdapter.js --recursive test/endToEnd"
   },
   "author": "William Lindner",
   "license": "MIT",
