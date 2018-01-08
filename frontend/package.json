@@ -36,7 +36,7 @@
     "react-router-dom": "^4.2.2",
     "style-loader": "^0.19.1",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.7"
+    "webpack-dev-server": "^2.10.0"
   },
   "dependencies": {
     "apollo-client-preset": "^1.0.5",
