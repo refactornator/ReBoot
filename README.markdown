@@ -1,5 +1,7 @@
 # An opinionated React/Redux + Spring Boot Starter App
 
+[![Build Status](https://travis-ci.org/wlindner/ReBoot.svg?branch=master)](https://travis-ci.org/wlindner/ReBoot)
+
 ![ReBoot](https://upload.wikimedia.org/wikipedia/en/3/37/Reboottitlecard.gif "ReBoot")
 
 Be more productive with this simple project that uses the [spring dev tools](https://spring.io/blog/2015/06/17/devtools-in-spring-boot-1-3)
