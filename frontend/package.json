@@ -6,14 +6,17 @@
     "start": "cross-env NODE_ENV=development webpack-dev-server",
     "bundle": "cross-env NODE_ENV=production webpack -p",
     "test": "yarn run test:unit && yarn run test:e2e",
-    "test:unit":
-      "cross-env NODE_ENV=test mocha --require ./test/configureAdapter.js --recursive test/unit",
-    "test:e2e":
-      "cross-env NODE_ENV=test mocha ./test/setup.js --require ./test/configureAdapter.js --recursive test/endToEnd"
+    "test:unit": "cross-env NODE_ENV=test mocha --require ./test/configureAdapter.js --recursive test/unit",
+    "test:e2e": "cross-env NODE_ENV=test mocha ./test/setup.js --require ./test/configureAdapter.js --recursive test/endToEnd",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "author": "William Lindner",
   "license": "MIT",
   "devDependencies": {
+    "@storybook/addon-actions": "^3.3.6",
+    "@storybook/addon-links": "^3.3.6",
+    "@storybook/react": "^3.3.6",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -34,6 +37,7 @@
     "react-addons-test-utils": "^15.0.0",
     "react-hot-loader": "^3.1.3",
     "react-router-dom": "^4.2.2",
+    "storybook-router": "^0.3.2",
     "style-loader": "^0.19.1",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.10.0"
