@@ -1,7 +1,7 @@
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
-import ListComponent from '../component/ListComponent';
+import List from '../component/List';
 
 const PeopleQuery = gql`
   {
@@ -20,4 +20,4 @@ export default graphql(PeopleQuery, {
       items: people.map(person => `${person.firstName || ''} ${person.lastName || ''}`)
     };
   }
-})(ListComponent);
+})(List);

@@ -2,15 +2,15 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 
 import React from 'react';
-import ListComponent from '../../../src/ui/component/ListComponent';
+import List from '../../../src/ui/component/List';
 
 const items = ['one', 'two', 'three'];
 let props = { items };
 
 describe('components', () => {
-  describe('ListComponent', () => {
+  describe('List', () => {
     it('should render three items', () => {
-      const component = shallow(<ListComponent {...props} />);
+      const component = shallow(<List {...props} />);
       expect(component.find('li').length).to.equal(3);
     });
   });

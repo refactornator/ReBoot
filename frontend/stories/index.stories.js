@@ -7,7 +7,7 @@ import { linkTo } from '@storybook/addon-links';
 
 import { Welcome } from '@storybook/react/demo';
 
-import ListComponent from '../src/ui/component/ListComponent';
+import List from '../src/ui/component/List';
 import Menu from '../src/ui/component/Menu';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
@@ -18,6 +18,4 @@ storiesOf('Menu', module)
 
 storiesOf('List', module)
   .addDecorator(StoryRouter())
-  .add('with a title and list items', () => (
-    <ListComponent title="Stuff" items={['one', 'two', 'three']} />
-  ));
+  .add('with a title and list items', () => <List title="Stuff" items={['one', 'two', 'three']} />);
