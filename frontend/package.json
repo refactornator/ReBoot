@@ -40,7 +40,7 @@
     "storybook-router": "^0.3.2",
     "style-loader": "^0.19.1",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.10.0"
+    "webpack-dev-server": "^3.0.0"
   },
   "dependencies": {
     "apollo-client-preset": "^1.0.6",
