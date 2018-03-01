@@ -3,6 +3,7 @@ package application.query.annotated;
 import application.model.Person;
 import application.repo.PersonRepository;
 import io.leangen.graphql.annotations.GraphQLArgument;
+import io.leangen.graphql.annotations.GraphQLMutation;
 import io.leangen.graphql.annotations.GraphQLQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -32,7 +33,6 @@ public class PersonQuery {
     return "Hello " + person.getFirstName() + "!";
   }
 
-
   /**
    * Getting a list of people
    * <p>
@@ -50,5 +50,13 @@ public class PersonQuery {
     Example<Person> example = Example.of(person);
     List<Person> people = personRepository.findAll(example);
     return StreamSupport.stream(people.spliterator(), false).collect(Collectors.toList());
+  }
+
+
+  @GraphQLMutation(name = "addPerson")
+  public Person addPerson(@GraphQLArgument(name = "Person", description = "Add a Person to the database") Person person) {
+    Person savedPerson = personRepository.save(person);
+
+    return savedPerson;
   }
 }

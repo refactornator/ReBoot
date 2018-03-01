@@ -9,6 +9,7 @@ export class App extends Component {
     return (
       <div id="application">
         <Menu />
+
         <PersonList />
       </div>
     );

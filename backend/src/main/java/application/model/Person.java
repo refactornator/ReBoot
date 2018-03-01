@@ -1,7 +1,9 @@
 package application.model;
 
 import io.leangen.graphql.annotations.GraphQLQuery;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -10,6 +12,8 @@ import javax.validation.constraints.Size;
 @Entity
 @Data
 @Table(name = "PERSON")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Person {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,5 +39,10 @@ public class Person {
   @GraphQLQuery(name = "lastName")
   public String getLastName() {
     return lastName;
+  }
+
+  public Person(String firstName, String lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
   }
 }
