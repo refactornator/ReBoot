@@ -31,7 +31,7 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "history": "^4.7.2",
     "html-webpack-plugin": "^2.30.1",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.5",
     "mocha": "^4.1.0",
     "puppeteer": "^0.13.0",
     "react-addons-test-utils": "^15.0.0",
