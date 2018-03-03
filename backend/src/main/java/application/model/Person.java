@@ -1,6 +1,7 @@
 package application.model;
 
 import io.leangen.graphql.annotations.GraphQLQuery;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -22,6 +23,10 @@ public class Person {
   @Size(max = 50)
   private String lastName;
 
+  public Person() {
+
+  }
+
   @GraphQLQuery(name = "id")
   public Long getId() {
     return id;
@@ -35,5 +40,10 @@ public class Person {
   @GraphQLQuery(name = "lastName")
   public String getLastName() {
     return lastName;
+  }
+
+  public Person(String firstName, String lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
   }
 }
