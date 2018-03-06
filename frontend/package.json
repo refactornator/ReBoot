@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "Spring boot and react frontend",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server",
-    "bundle": "cross-env NODE_ENV=production webpack -p",
+    "start": "cross-env webpack-dev-server --mode development",
+    "bundle": "cross-env webpack --mode production",
     "test": "yarn run test:unit && yarn run test:e2e",
     "test:unit": "cross-env NODE_ENV=test mocha --require ./test/configureAdapter.js --recursive test/unit",
     "test:e2e": "cross-env NODE_ENV=test mocha ./test/setup.js --require ./test/configureAdapter.js --recursive test/endToEnd",
@@ -35,12 +35,13 @@
     "mocha": "^5.0.1",
     "puppeteer": "^1.1.1",
     "react-addons-test-utils": "^15.0.0",
-    "react-hot-loader": "^3.1.3",
+    "react-hot-loader": "^4.0.0",
     "react-router-dom": "^4.2.2",
     "storybook-router": "^0.3.2",
     "style-loader": "^0.20.2",
     "webpack": "^4.1.0",
-    "webpack-dev-server": "^2.10.0"
+    "webpack-cli": "^2.0.10",
+    "webpack-dev-server": "^3.1.0"
   },
   "dependencies": {
     "apollo-client-preset": "^1.0.8",
