@@ -5,7 +5,6 @@ import application.repo.PersonRepository;
 import io.leangen.graphql.annotations.GraphQLArgument;
 import io.leangen.graphql.annotations.GraphQLQuery;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -37,18 +36,13 @@ public class PersonQuery {
    * Getting a list of people
    * <p>
    * Invoke with:
-   * {people(Person: {id: 1}) {firstName, lastName}}
-   * {people(Person: {firstName: "Dot"}) {id}}
-   * {people(Person: {lastName: "Matrix"}) {id, firstName}}
+   * {people {id, firstName, lastName}}
    *
-   * @return people
+   * @return List<Person> people
    */
   @GraphQLQuery(name = "people")
-  public List<Person> getPeople(@GraphQLArgument(name = "Person", description = "Find people by id, first name, or last name") Person person) {
-    if(person == null) person = new Person();
-
-    Example<Person> example = Example.of(person);
-    List<Person> people = personRepository.findAll(example);
+  public List<Person> getPeople() {
+    List<Person> people = personRepository.findAll();
     return StreamSupport.stream(people.spliterator(), false).collect(Collectors.toList());
   }
 }
