@@ -1,4 +1,5 @@
-import { graphql } from 'react-apollo';
+import React, { Component } from 'react';
+import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import List from '../component/List';
@@ -13,11 +14,13 @@ const PeopleQuery = gql`
   }
 `;
 
-export default graphql(PeopleQuery, {
-  props: ({ data: { people = [] } }) => {
-    return {
-      title: 'People',
-      items: people.map(person => `${person.firstName || ''} ${person.lastName || ''}`)
-    };
-  }
-})(List);
+export default () => (
+  <Query query={PeopleQuery}>
+    {({ data: { people = [] } }) => (
+      <List
+        title="People"
+        items={people.map(person => `${person.firstName || ''} ${person.lastName || ''}`)}
+      />
+    )}
+  </Query>
+);
