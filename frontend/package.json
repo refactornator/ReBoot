@@ -15,7 +15,7 @@
   "license": "MIT",
   "devDependencies": {
     "@storybook/addon-actions": "^3.3.6",
-    "@storybook/addon-links": "^3.3.6",
+    "@storybook/addon-links": "^3.4.2",
     "@storybook/react": "^3.3.14",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
