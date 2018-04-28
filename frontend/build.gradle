@@ -8,30 +8,30 @@ version '0.0.1'
 buildDir = 'dist'
 
 node {
-  version = '8.9.3'
-  yarnVersion = '1.2.1'
+  version = '10.0.0'
+  npmVersion = '6.0.0'
   download = true
 }
 
-task bundle(type: YarnTask) {
+task bundle(type: NpmTask) {
   inputs.dir(new File('assets'))
   inputs.dir(new File('src'))
   outputs.dir(new File('dist'))
-  args = ['run', 'bundle']
+  args = ['run', 'build']
 }
 
-task start(type: YarnTask) {
+task start(type: NpmTask) {
   args = ['start']
 }
 
-task unitTest(type: YarnTask) {
-  args = ['test:unit']
+task unitTest(type: NpmTask) {
+  args = ['test']
 }
 
-task e2eTest(type: YarnTask) {
+task e2eTest(type: NpmTask) {
   args = ['test:e2e']
 }
 
 check.dependsOn(unitTest)
-bundle.dependsOn(yarn_install)
+bundle.dependsOn(npm_install)
 assemble.dependsOn(bundle)

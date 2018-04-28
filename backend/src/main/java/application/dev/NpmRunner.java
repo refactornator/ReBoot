@@ -12,27 +12,25 @@ import org.zeroturnaround.exec.stream.slf4j.Slf4jStream;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 @Component
-public class YarnRunner implements CommandLineRunner {
+public class NpmRunner implements CommandLineRunner {
 
   private Environment environment;
-  private static Logger log = LoggerFactory.getLogger(YarnRunner.class);
+  private static Logger log = LoggerFactory.getLogger(NpmRunner.class);
 
   @Autowired
-  public YarnRunner(Environment environment) {
+  public NpmRunner(Environment environment) {
     this.environment = environment;
   }
 
   @Override
   public void run(String... args) throws Exception {
     if (!environment.acceptsProfiles("production") && !environment.acceptsProfiles("test")) {
-      AtomicBoolean registered = (AtomicBoolean) Restarter.getInstance().getOrAddAttribute("yarnStarted", AtomicBoolean::new);
+      AtomicBoolean registered = (AtomicBoolean) Restarter.getInstance().getOrAddAttribute("npmStarted", AtomicBoolean::new);
       boolean alreadyRun = registered.getAndSet(true);
       if (!alreadyRun) {
         startFrontend();
@@ -40,47 +38,40 @@ public class YarnRunner implements CommandLineRunner {
     }
   }
 
-  private void yarnStart(File frontendDir) throws IOException {
-    ProcessExecutor process = command("yarn", "start")
+  private void npmStart(File frontendDir) throws IOException {
+    ProcessExecutor process = command("npm", "start")
       .directory(frontendDir)
-      .redirectOutput(Slf4jStream.of(LoggerFactory.getLogger("yarn")).asInfo())
-      .redirectError(Slf4jStream.of(LoggerFactory.getLogger("yarn")).asError());
+      .redirectOutput(Slf4jStream.of(LoggerFactory.getLogger("npm")).asInfo())
+      .redirectError(Slf4jStream.of(LoggerFactory.getLogger("npm")).asError());
 
     process.start();
   }
 
   private void startFrontend() throws IOException, TimeoutException, InterruptedException {
     File frontendDir = locate("./frontend/package.json", "../frontend/package.json");
-    if (!yarnCheck(frontendDir)) {
-      log.info("Your frontend dependencies seem to be out of date. Running yarn install. Hang tight...");
-      yarnInstall(frontendDir);
-    }
-    yarnStart(frontendDir);
+    log.info("Your frontend dependencies seem to be out of date. Running yarn install. Hang tight...");
+    npmInstall(frontendDir);
+    npmStart(frontendDir);
   }
 
   private boolean yarnCheck(File frontendDir) throws InterruptedException, TimeoutException, IOException {
-    ProcessExecutor process = command("yarn", "check")
+    ProcessExecutor process = command("npm", "check")
       .directory(frontendDir)
       .exitValueAny();
 
     return process.execute().getExitValue() == 0;
   }
 
-  private void yarnInstall(File frontendDir) throws InterruptedException, TimeoutException, IOException {
-    command("yarn", "install")
+  private void npmInstall(File frontendDir) throws InterruptedException, TimeoutException, IOException {
+    command("npm", "install")
       .directory(frontendDir)
-      .redirectOutput(Slf4jStream.of(LoggerFactory.getLogger("yarn")).asInfo())
-      .redirectError(Slf4jStream.of(LoggerFactory.getLogger("yarn")).asError())
+      .redirectOutput(Slf4jStream.of(LoggerFactory.getLogger("npm")).asInfo())
+      .redirectError(Slf4jStream.of(LoggerFactory.getLogger("npm")).asError())
       .exitValueNormal()
       .execute();
   }
 
   private ProcessExecutor command(String... cmd) {
-    if (isWindows()) {
-      List<String> args = new ArrayList<>(Arrays.asList("cmd", "/c"));
-      args.addAll(Arrays.asList(cmd));
-      return new ProcessExecutor().command(args);
-    }
     return new ProcessExecutor().command(Arrays.asList(cmd));
   }
 
@@ -93,10 +84,6 @@ public class YarnRunner implements CommandLineRunner {
       }
     }
     throw new IllegalStateException("Could not locate project");
-  }
-
-  private boolean isWindows() {
-    return System.getProperty("os.name").toLowerCase().contains("win");
   }
 
 }

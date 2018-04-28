@@ -8,19 +8,14 @@ import { Route } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
 
+import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
-import { ApolloClient } from 'apollo-client';
-import { HttpLink } from 'apollo-link-http';
-import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import { AppContainer } from 'react-hot-loader';
 
 import App from './ui/container/App';
 
-const client = new ApolloClient({
-  link: new HttpLink(),
-  cache: new InMemoryCache()
-});
+const client = new ApolloClient();
 
 const history = createHistory();
 const middleware =
