@@ -6,8 +6,7 @@
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "test": "NODE_ENV=test mocha --require ./test/configureAdapter.js --recursive test/unit",
-    "test:e2e":
-      "NODE_ENV=test mocha ./test/setup.js --require ./test/configureAdapter.js --recursive test/endToEnd",
+    "test:e2e": "NODE_ENV=test mocha ./test/setup.js --require ./test/configureAdapter.js --recursive test/endToEnd",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -33,7 +32,6 @@
     "lodash": "^4.17.10",
     "mocha": "^5.1.1",
     "puppeteer": "^1.3.0",
-    "react-addons-test-utils": "^15.0.0",
     "react-hot-loader": "^4.1.2",
     "react-router-dom": "^4.2.2",
     "storybook-router": "^0.3.3",
