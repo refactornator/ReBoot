@@ -21,7 +21,7 @@
     "babel-loader": "^7.1.4",
     "babel-plugin-styled-components": "^1.5.1",
     "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "chai": "^4.1.2",
     "css-loader": "^0.28.11",
